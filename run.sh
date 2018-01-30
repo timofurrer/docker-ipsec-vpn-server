@@ -132,7 +132,10 @@ conn shared
   dpdtimeout=120
   dpdaction=clear
   ike=3des-sha1,3des-sha2,aes-sha1,aes-sha1;modp1024,aes-sha2,aes-sha2;modp1024,aes256-sha2_512
-  phase2alg=3des-sha1,3des-sha2,aes-sha1,aes-sha2,aes256-sha2_512
+# Patch /etc/ipsec.conf according to https://bugs.chromium.org/p/chromium/issues/detail?id=707139#c58
+# to make it work for Chrome OS
+  #phase2alg=3des-sha1,3des-sha2,aes-sha1,aes-sha2,aes256-sha2_512
+  phase2alg=aes_gcm-null
   sha2-truncbug=yes
 
 conn l2tp-psk

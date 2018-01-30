@@ -39,10 +39,6 @@ RUN apt-get -yqq update \
 COPY ./run.sh /opt/src/run.sh
 RUN chmod 755 /opt/src/run.sh
 
-# Patch /etc/ipsec.conf according to https://bugs.chromium.org/p/chromium/issues/detail?id=707139#c58
-# to make it work for Chrome OS
-RUN sed 's/phase2alg=.*/phase2alg=aes_gcm-null/' -i /etc/ipsec.conf
-
 EXPOSE 500/udp 4500/udp
 
 VOLUME ["/lib/modules"]
